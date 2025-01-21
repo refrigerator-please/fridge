@@ -1,3 +1,4 @@
+import FoodCard from "@/components/FoodCard";
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function HomeScreen() {
@@ -6,7 +7,10 @@ export default function HomeScreen() {
       <View style={styles.header}>
         <Text style={styles.date}>1월 22일</Text>
       </View>
-      <ScrollView style={styles.main}></ScrollView>
+      <View style={styles.main}>
+        <FoodCard />
+        <FoodCard />
+      </View>
     </SafeAreaView>
   );
 }
@@ -25,7 +29,10 @@ const styles = StyleSheet.create({
   },
   main: {
     flex: 1,
+    flexDirection: "column",
+    gap: 8,
     margin: 12,
+    padding: 16,
     borderRadius: 24,
     backgroundColor: "#489ECD10",
   },
