@@ -1,15 +1,26 @@
+import { Food } from "@/types/Food.type";
+import dayjs from "dayjs";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { getDueDate } from "../model/food";
 
-const FoodCard = () => {
+interface Props {
+  food: Food;
+}
+
+const FoodCard = ({ food }: Props) => {
+  const { dueDate } = getDueDate({ date: food.expireDate });
+
   return (
     <View style={{ flexDirection: "row" }}>
       <View style={styles.wrapper}>
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <Text style={styles.icon}>🍌</Text>
-          <Text style={styles.title}>컬리에서 산 빠나나</Text>
+        <View style={{ gap: 12, flexDirection: "row", alignItems: "center" }}>
+          <Text style={styles.icon}>{food.icon}</Text>
+          <Text style={styles.title}>{food.name}</Text>
         </View>
-        <Text style={{ color: "#489ECD", fontWeight: 700 }}>1일 남음</Text>
+        <Text style={{ color: "#489ECD", fontWeight: 700 }}>
+          {dueDate}일 남음
+        </Text>
       </View>
     </View>
   );
