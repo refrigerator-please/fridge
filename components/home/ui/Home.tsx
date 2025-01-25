@@ -1,15 +1,10 @@
-import dayjs from "dayjs";
+import { Colors } from "@/constants/Colors";
+import { Food } from "@/types/Food.type";
 import React from "react";
 import { FlatList, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import FoodCard from "./FoodCard";
-import { Food } from "@/types/Food.type";
-import { Colors } from "@/constants/Colors";
 
 const Home = () => {
-  const today = dayjs();
-  const month = today.month() + 1;
-  const date = today.date();
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
