@@ -1,7 +1,9 @@
 import dayjs from "dayjs";
 import React from "react";
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
+import { FlatList, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import FoodCard from "./FoodCard";
+import { Food } from "@/types/Food.type";
+import { Colors } from "@/constants/Colors";
 
 const Home = () => {
   const today = dayjs();
@@ -16,16 +18,10 @@ const Home = () => {
         </Text>
       </View>
       <View style={styles.main}>
-        <ScrollView contentContainerStyle={styles.scrollView}>
-          {foodList
-            .concat(foodList)
-            .concat(foodList)
-            .concat(foodList)
-            .concat(foodList)
-            .map((food) => (
-              <FoodCard food={food} />
-            ))}
-        </ScrollView>
+        <FlatList
+          data={foodList}
+          renderItem={({ item }: { item: Food }) => <FoodCard food={item} />}
+        />
       </View>
     </SafeAreaView>
   );
@@ -47,20 +43,16 @@ const styles = StyleSheet.create({
   },
   main: {
     flex: 1,
-    margin: 12,
+    marginHorizontal: 12,
     padding: 16,
     borderRadius: 24,
-    backgroundColor: "#489ECD10",
-  },
-  scrollView: {
-    flex: 1,
-    flexDirection: "column",
-    rowGap: 8,
+    backgroundColor: Colors.light.background.primary10,
   },
 });
 
 const foodList = [
-  { icon: "🍌", name: "컬리에서 산 빠나나", expireDate: "2025-01-24" },
-  { icon: "🧇", name: "맛나 호떡", expireDate: "2025-01-29" },
+  { icon: "🍌", name: "롯데마트에서 산 빠나나", expireDate: "2025-01-24" },
+  { icon: "🎂", name: "홈베이킹 초코케이쿠🍫", expireDate: "2025-01-29" },
   { icon: "🍕", name: "냉동 피자", expireDate: "2025-03-01" },
+  { icon: "🍖", name: "설로인 고기", expireDate: "2025-02-01" },
 ];
