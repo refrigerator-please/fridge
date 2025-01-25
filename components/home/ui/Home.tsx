@@ -13,9 +13,7 @@ const Home = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.date}>
-          {month}월 {date}일
-        </Text>
+        <Text style={styles.date}>Fridge</Text>
       </View>
       <View style={styles.main}>
         <FlatList
@@ -30,16 +28,20 @@ const Home = () => {
 export default Home;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "white" },
+  container: { flex: 1, backgroundColor: "white", gap: 12 },
   header: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
+    marginHorizontal: 12,
+    paddingHorizontal: 12,
     width: "100%",
     color: "black",
   },
   date: {
-    fontWeight: 600,
-    fontSize: 20,
+    color: Colors.light.primary900,
+    fontWeight: 700,
+    fontSize: 24,
+    height: 32,
   },
   main: {
     flex: 1,
